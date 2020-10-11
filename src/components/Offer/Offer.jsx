@@ -13,15 +13,14 @@ function Offer({ ...offer }) {
     skip: !offer.activity,
   });
 
-
   return (
     <OfferWrapper>
       <div className="events">
         <>
-          <h6>{offer.date_start}</h6>
+          <h6>{offer.date_start} </h6>
           <div className="events__content">
             <div className="events__content-image">
-              <img src={coach&& coach.user.photo} alt="hello"></img>
+              <img src={coach&& coach.user.photo} alt="coach"></img>
             </div>
             <div className="events__content-data">
               <div className="events__content-data-course"> {activity && activity.name}  </div>
