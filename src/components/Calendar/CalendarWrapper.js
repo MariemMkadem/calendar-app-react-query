@@ -64,7 +64,7 @@ const CalendarWrapper = styled.div`
     }
   }
 
-  /* Calendar  Cells*/
+  /* Calendar  CalendarItem*/
   .cell {
     margin-top: 5px;
     position: relative;
@@ -124,6 +124,16 @@ const CalendarWrapper = styled.div`
     flex-grow: 0;
     flex-basis: calc(100% / 7);
     width: calc(100% / 7);
+  }
+
+  /* Calendar  HEADER*/
+  .days {
+    text-transform: uppercase;
+    font-weight: 400;
+    color: gray;
+    font-size: 70%;
+    padding: 0.75em 0;
+    border-bottom: 1px solid lightgray;
   }
 `;
 

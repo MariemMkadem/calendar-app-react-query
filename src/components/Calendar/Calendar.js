@@ -1,15 +1,24 @@
 import React, { useState } from "react";
-import { addWeeks,subWeeks ,startOfWeek, endOfWeek } from "date-fns";
+import { addWeeks,subWeeks ,startOfWeek, endOfWeek , addDays } from "date-fns";
 import { faChevronLeft , faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CalendarWrapper from "./CalendarWrapper";
-import Cells from "../Cells";
-import Days from "../Days";
+import CalendarItem from "../CalendarItem";
 import formatDateHeader from '../../utils/formatDateHeader';
+import formatDays from "../../utils/formatDays";
+
 
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    days.push(
+      <div className="column" key={i}>
+        {formatDays(addDays(startOfWeek(currentDate), i))}
+      </div>
+    );
+  }
 
   return (
     <CalendarWrapper>
@@ -30,8 +39,8 @@ const Calendar = () => {
             </div>
           </div>
         </div>
-        <Days currentDate={currentDate} />
-        <Cells selectedDate={selectedDate} setSelectedDate={setSelectedDate} currentDate={currentDate} />
+        <div className="days row">{days}</div>
+        <CalendarItem selectedDate={selectedDate} setSelectedDate={setSelectedDate} currentDate={currentDate} />
       </div>
     </CalendarWrapper>
   );
