@@ -5,14 +5,12 @@ import {
   addDays,
   startOfMonth,
   endOfWeek,
-  parse,
+  format,
   isSameMonth,
   isSameDay,
 } from "date-fns";
-import formatDateDays from "../../utils/formatDateDays";
-import formatDateDaysCell from "../../utils/formatDateDaysCell";
 
-const Cells = ({ selectedDate, setSelectedDate, currentDate }) => {
+const CalendarItem = ({ selectedDate, setSelectedDate, currentDate }) => {
   const rows = [];
   let days = [];
   let day = startOfWeek(currentDate);
@@ -28,10 +26,10 @@ const Cells = ({ selectedDate, setSelectedDate, currentDate }) => {
               : ""
           }`}
           key={day}
-          onClick={() => setSelectedDate(parse(day))}
+          onClick={() => setSelectedDate(day)}
         >
-          <span className="letter">{formatDateDaysCell(day)}</span>
-          <span className="number">{formatDateDays(day)}</span>
+          <span className="letter">{format(day, 'eeeee')}</span>
+          <span className="number">{format(day,'d')}</span>
         </div>
    
       );
@@ -47,4 +45,4 @@ const Cells = ({ selectedDate, setSelectedDate, currentDate }) => {
   return <div className="body">{rows}</div>;
 };
 
-export default Cells;
+export default CalendarItem;

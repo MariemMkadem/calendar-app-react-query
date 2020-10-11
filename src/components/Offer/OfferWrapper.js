@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const EventsWrapper = styled.div`
+const OfferWrapper = styled.div`
   .events {
     display: block;
     position: relative;
@@ -21,7 +21,6 @@ const EventsWrapper = styled.div`
     }
     &__content {
       display: flex;
-      border-bottom: 1px solid #d9e4dd;
 
       img {
         border: 1px solid #ddd;
@@ -48,4 +47,4 @@ const EventsWrapper = styled.div`
   }
 `;
 
-export default EventsWrapper;
+export default OfferWrapper;
