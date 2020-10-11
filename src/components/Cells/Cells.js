@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 import React from "react";
 import {
   startOfWeek,
@@ -8,41 +9,31 @@ import {
   isSameMonth,
   isSameDay,
 } from "date-fns";
-import formatDateDays from '../../utils/formatDateDays';
-import formatDateDaysCell from '../../utils/formatDateDaysCell';
+import formatDateDays from "../../utils/formatDateDays";
+import formatDateDaysCell from "../../utils/formatDateDaysCell";
 
-const Cells = ({selectedDate,setSelectedDate, currentDate}) => {
-  const monthStart = startOfMonth(currentDate);
-  const startDate = startOfWeek(currentDate);
-  const endDate = endOfWeek(currentDate);
+const Cells = ({ selectedDate, setSelectedDate, currentDate }) => {
   const rows = [];
   let days = [];
-  let day = startDate;
-  let formattedDate = "";
-  let formattedDateCells = "";
-  while (day <= endDate) {
+  let day = startOfWeek(currentDate);
+  while (day <= endOfWeek(currentDate)) {
     for (let i = 0; i < 7; i++) {
-      formattedDate =formatDateDays(day);
-      formattedDateCells= formatDateDaysCell(day);
-      const cloneDay = day;
-      const onDateClick = (day) => {
-        setSelectedDate(day);
-      };
       days.push(
         <div
           className={`column cell ${
-            !isSameMonth(day, monthStart)
+            !isSameMonth(day, startOfMonth(currentDate))
               ? "disabled"
               : isSameDay(day, selectedDate)
               ? "selected"
               : ""
           }`}
           key={day}
-          onClick={() => onDateClick(parse(cloneDay))}
+          onClick={() => setSelectedDate(parse(day))}
         >
-           <span className="letter">{formattedDateCells}</span>
-          <span className="number">{formattedDate}</span>
+          <span className="letter">{formatDateDaysCell(day)}</span>
+          <span className="number">{formatDateDays(day)}</span>
         </div>
+   
       );
       day = addDays(day, 1);
     }

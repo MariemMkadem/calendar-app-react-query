@@ -7,20 +7,9 @@ import Cells from "../Cells";
 import Days from "../Days";
 import formatDateHeader from '../../utils/formatDateHeader';
 
-
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  const startDate = startOfWeek(currentDate);
-  const endDate = endOfWeek(currentDate);
-
-  const nextWeek = () => {
-    setCurrentDate(addWeeks(currentDate, 1));
-  };
-  const prevWeek = () => {
-    setCurrentDate(subWeeks(currentDate, 1));
-  };
 
   return (
     <CalendarWrapper>
@@ -28,15 +17,15 @@ const Calendar = () => {
       <div className="calendar">
         <div className="header row">
           <div className="column">
-            <div className="icon" onClick={prevWeek}>
+            <div className="icon" onClick={()=> setCurrentDate(subWeeks(currentDate, 1))}>
             <FontAwesomeIcon icon={faChevronLeft} />
             </div>
           </div>
           <div className="column">
-             <span> Sun. {formatDateHeader(startDate)} - Sat {formatDateHeader(endDate)}    </span>
+             <span> Sun. {formatDateHeader(startOfWeek(currentDate))} - Sat {formatDateHeader(endOfWeek(currentDate))}    </span>
           </div>
           <div className="column">
-            <div className="icon" onClick={nextWeek}>
+            <div className="icon" onClick={()=> setCurrentDate(addWeeks(currentDate, 1))}>
             <FontAwesomeIcon icon={faChevronRight} />
             </div>
           </div>

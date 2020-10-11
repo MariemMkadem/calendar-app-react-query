@@ -3,9 +3,9 @@ import React from "react";
 import EventsWrapper from "./EventsWrapper";
 import { get } from "lodash";
 import { useQuery } from "react-query";
-import Offer from '../../ApiData/Offer';
-import Coach from '../../ApiData/Coach';
-import Activity from '../../ApiData/Activity';
+import Offer from "../../ApiData/Offer";
+import Coach from "../../ApiData/Coach";
+import Activity from "../../ApiData/Activity";
 
 const Events = () => {
   const { data: OfferData } = useQuery("offer", Offer);
