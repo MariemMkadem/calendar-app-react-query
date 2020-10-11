@@ -1,7 +1,5 @@
 import React from "react";
-
 import {
-  format,
   startOfWeek,
   addDays,
   startOfMonth,
@@ -10,13 +8,13 @@ import {
   isSameMonth,
   isSameDay,
 } from "date-fns";
+import formatDateDays from '../../utils/formatDateDays';
+import formatDateDaysCell from '../../utils/formatDateDaysCell';
 
 const Cells = ({selectedDate,setSelectedDate, currentDate}) => {
   const monthStart = startOfMonth(currentDate);
   const startDate = startOfWeek(currentDate);
   const endDate = endOfWeek(currentDate);
-  const dateFormatDays = "d";
-  const dateFormatDaysCell = "eeeee";
   const rows = [];
   let days = [];
   let day = startDate;
@@ -24,8 +22,8 @@ const Cells = ({selectedDate,setSelectedDate, currentDate}) => {
   let formattedDateCells = "";
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
-      formattedDate = format(day, dateFormatDays);
-      formattedDateCells= format(day,dateFormatDaysCell);
+      formattedDate =formatDateDays(day);
+      formattedDateCells= formatDateDaysCell(day);
       const cloneDay = day;
       const onDateClick = (day) => {
         setSelectedDate(day);

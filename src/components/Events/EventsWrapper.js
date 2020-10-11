@@ -31,9 +31,14 @@ const EventsWrapper = styled.div`
       }
       &-data {
         padding: 20px;
-        &-level {
-          color: red;
-          font-size: 13px;
+        &-level  {
+          display : flex;
+          font-size: 14px;
+          p:first-child {
+            color:red;
+
+          }
+   
         }
         &-local {
             color: #a6a6a4

@@ -2,28 +2,18 @@ import React, { useState } from "react";
 import { addWeeks,subWeeks, format ,startOfWeek, endOfWeek } from "date-fns";
 import { faChevronLeft , faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useQuery} from 'react-query';
 import CalendarWrapper from "./CalendarWrapper";
 import Cells from "../Cells";
 import Days from "../Days";
+import formatDateHeader from '../../utils/formatDateHeader';
 
-
-const fetchCoatchs = async()=> {
-  const res = await fetch('https://api.staging.bsport.io/api/v1/associated_coach/');
- return res.json();
-
-} 
 
 const Calendar = () => {
-  const {data, status} = useQuery('coachs', fetchCoatchs);
- // console.log(data);
-  const dateFormat = "dd/M";
-
-  
-
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+
+  const mariem = new Date();
   const startDate = startOfWeek(currentDate);
   const endDate = endOfWeek(currentDate);
 
@@ -45,7 +35,7 @@ const Calendar = () => {
             </div>
           </div>
           <div className="column">
-             <span> Sun. {format(startDate, dateFormat)} - Sat {format(endDate, dateFormat)}    </span>
+             <span> Sun. {formatDateHeader(startDate)} - Sat {formatDateHeader(endDate)}    </span>
           </div>
           <div className="column">
             <div className="icon" onClick={nextWeek}>

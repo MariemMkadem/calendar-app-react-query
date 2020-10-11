@@ -1,17 +1,15 @@
-
 import React from 'react';
-import { format, startOfWeek, addDays} from "date-fns";
+import { startOfWeek, addDays} from "date-fns";
 import DaysWrapper from './DaysWrapper';
+import formatDays from '../../utils/formatDays';
 
 const Days = ({currentDate}) => {
-    const dateFormat = "iii";
-    console.log(dateFormat);
     const days = [];
     let startDate = startOfWeek(currentDate);
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className="column" key={i}>
-          {format(addDays(startDate, i), dateFormat)}
+          {formatDays(addDays(startDate, i))}
         </div>
       );
     }
