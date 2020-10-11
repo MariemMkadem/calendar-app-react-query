@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addWeeks,subWeeks, format ,startOfWeek, endOfWeek } from "date-fns";
+import { addWeeks,subWeeks ,startOfWeek, endOfWeek } from "date-fns";
 import { faChevronLeft , faChevronRight} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CalendarWrapper from "./CalendarWrapper";
@@ -12,8 +12,6 @@ const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-
-  const mariem = new Date();
   const startDate = startOfWeek(currentDate);
   const endDate = endOfWeek(currentDate);
 

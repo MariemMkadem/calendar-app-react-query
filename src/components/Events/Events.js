@@ -3,27 +3,9 @@ import React from "react";
 import EventsWrapper from "./EventsWrapper";
 import { get } from "lodash";
 import { useQuery } from "react-query";
-
-const Offer = async () => {
-  const res = await fetch(
-    "https://api.staging.bsport.io/api/v1/offer?compa&ompany=6"
-  );
-  return res.json();
-};
-
-const Activity = async () => {
-  const res = await fetch(
-    "https://api.staging.bsport.io/api/v1/meta-activity?compa&ompany=6"
-  );
-  return res.json();
-};
-
-const Coach = async () => {
-  const res = await fetch(
-    "https://api.staging.bsport.io/api/v1/coach?company=6"
-  );
-  return res.json() || [];
-};
+import Offer from '../../ApiData/Offer';
+import Coach from '../../ApiData/Coach';
+import Activity from '../../ApiData/Activity';
 
 const Events = () => {
   const { data: OfferData } = useQuery("offer", Offer);
