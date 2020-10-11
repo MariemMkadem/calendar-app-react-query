@@ -1,4 +1,5 @@
 import React from "react";
+import { format} from "date-fns";
 import useCoach from "../../utils/api/useCoach";
 import useEstablishment from "../../utils/api/useEstablishment";
 import useActivity from "../../utils/api/useActivity"
@@ -12,7 +13,7 @@ function Offer({ ...offer }) {
   const { activity } = useActivity(offer.activity, {
     skip: !offer.activity,
   });
-
+console.log(offer);
   return (
     <OfferWrapper>
       <div className="events">

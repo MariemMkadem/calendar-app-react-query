@@ -6,7 +6,7 @@ import { format} from "date-fns";
 function OfferList({currentDate}) {
 
 
-    const { loading, offers } = useOffers({ filters: {min_date:format(currentDate, 'yyyy-MM-dd') } });
+    const { loading, offers } = useOffers({ filters: {min_date:format(currentDate, 'yyyy-MM-dd'),max_date:format(currentDate, 'yyyy-MM-dd') },  });
     return(
         <div>
             {loading
